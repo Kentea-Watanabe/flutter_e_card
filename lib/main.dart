@@ -34,14 +34,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: TextButton(
-          child: Text("Start"),
+          child: Text(
+            "Start",
+            style: TextStyle(
+              fontSize: 46,
+            ),
+          ),
           onPressed: () {
             // （1） 指定した画面に遷移する
             Navigator.push(
@@ -88,17 +85,16 @@ class EmperorPage extends StatelessWidget {
                     } else {
                       emperor.remove("市民");
                     }
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         // （2） 実際に表示するページ(ウィジェット)を指定する
-                    //         builder: (context) => SlavePage()));
                     Navigator.of(context)
                         .pushNamed("/slave", arguments: emperor_);
                   },
-                  child: Text(emperor_),
+                  child: Text(
+                    emperor_,
+                    style: TextStyle(
+                      fontSize: 46,
+                    ),
+                  ),
                 ),
-              // 少しずつ値を変えたいけど、やりかた分らん。
               SizedBox(
                 width: defalut_width,
                 height: 30,
@@ -141,7 +137,12 @@ class SlavePage extends StatelessWidget {
                     //残タスク -> バトル結果表示画面に遷移！
                     Navigator.of(context).pushNamed("/result", arguments: re);
                   },
-                  child: Text(slave_),
+                  child: Text(
+                    slave_,
+                    style: TextStyle(
+                      fontSize: 46,
+                    ),
+                  ),
                 ),
               // 少しずつ値を変えたいけど、やりかた分らん。
               SizedBox(
@@ -195,19 +196,34 @@ class ResultPage extends StatelessWidget {
             // 中央寄せ
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(result_),
+              Text(
+                result_,
+                style: TextStyle(
+                  fontSize: 40,
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed("/emperor");
                 },
-                child: Text('続行する'),
+                child: Text(
+                  '続行する',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
               SizedBox(width: 10, height: 10),
               ElevatedButton(
                 onPressed: () {
                   Navigator.popUntil(context, (route) => route.isFirst);
                 },
-                child: Text('HOMEに戻る'),
+                child: Text(
+                  'HOMEに戻る',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
               SizedBox(width: 10, height: 10),
             ],
